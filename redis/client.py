@@ -2566,6 +2566,8 @@ class BasePipeline(object):
         try:
             response = self.parse_response(connection, '_')
         except ExecAbortError:
+            print errors[0][1]
+            print sys.exc_info()[1]
             if self.explicit_transaction:
                 self.immediate_execute_command('DISCARD')
             if errors:
